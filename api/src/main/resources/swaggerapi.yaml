@@ -1,0 +1,33 @@
+openapi: 3.0.3
+info:
+  title: Single YAML File Upload API
+  description: API to upload a single YAML file.
+  version: 1.0.0
+
+paths:
+  /upload-yaml-file:
+    post:
+      summary: Upload a single YAML file
+      description: Accepts a single YAML file as a file upload.
+      operationId: uploadYamlFile
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: A single YAML file to upload.
+        required: true
+      responses:
+        '200':
+          description: Successfully uploaded the YAML file
+          content: {}  # No response body
+        '400':
+          description: Invalid input (e.g., file is not a YAML file)
+          content: {}  # No response body
+        '500':
+          description: Internal server error
+          content: {}  # No response body
